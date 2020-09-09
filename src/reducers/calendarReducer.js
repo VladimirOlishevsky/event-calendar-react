@@ -7,10 +7,10 @@ import {
   TOGGLE_EVENTS_SB,
   TOGGLE_NEW_EVENT_SB,
   SET_DAY_DETAIL,
-  ADD_EVENT,
   DELETE_EVENT,
   SET_EVENTS,
   EVENT_VIEW,
+  ADD_EVENT_DATE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -18,7 +18,7 @@ const initialState = {
   currentMonth: null,
   currentYear: null,
   days: [],
-  currentEvents: [],
+  //currentEvents: [],
   dayDetail: {
     today: null,
     events: []
@@ -27,6 +27,7 @@ const initialState = {
   eventsSidebarToggled: false,
   newEventSidebarToggled: false,
   editEventSidebarToggled: false,
+  eventDate: '',
   // editedEvent: {
   //   id: "",
   //   eventName: "",
@@ -34,17 +35,18 @@ const initialState = {
   //   participants: "",
   //   description: "",
   // },
-  events: [],
-  flagEvent: false,
+  //events: [],
+  //flagEvent: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_CURRENT_DATE:
 
+    //console.log(action.payload)
       return {
         ...state,
-        currentDayOfMonth: action.payload.day,
+        currentDayOfMonth: action.payload.date,
           currentMonth: action.payload.month,
           currentYear: action.payload.year
       };
@@ -84,52 +86,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         dayDetail: action.payload
-        //dayDetail: [...state.dayDetail, action.payload]
       };
-    case ADD_EVENT:
-      return {
-        ...state,
-        events: [...state.events, action.payload]
-      };
+
     case DELETE_EVENT:
+      console.log(action.payload)
       return {
         ...state,
         events: state.events.filter(e => e.id !== action.payload)
       };
     case SET_EVENTS:
-
       return {
         ...state,
         events: action.payload
       };
-    case EVENT_VIEW:
+      case ADD_EVENT_DATE:
       return {
         ...state,
-        flagEvent: action.payload
-      }
-    // case EDIT_EVENT:
-    //   return {
-    //     ...state,
-    //     editedEvent: action.payload
-    //   }
-    // case CHANGE_EVENT_FIELD:
-    //   console.log(action.payload)
-    //   const {name, value} = action.payload;
-    //   return {
-    //     ...state,
-    //     ...editedEvent,[name]: value
-    //   };
-    // case CLEAR_EVENT_FIELD:
-    //   return {
-    //     ...state,
-    //     editedEvent: {
-    //       id: "",
-    //       name: "",
-    //       date: "",
-    //       participants: "",
-    //       description: "",
-    //     }
-    //   }
+        eventDate: action.payload
+      };
       default:
         return state;
   }

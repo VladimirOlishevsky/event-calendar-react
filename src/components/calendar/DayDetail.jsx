@@ -1,11 +1,9 @@
-import React from "react";
+import React  from "react";
 import {useSelector, useDispatch} from 'react-redux';
 
-import { toggleDetailSidebarDispatch, deleteEventDispatch, setDayDetailDispatch, toggleNewEventSidebarDispatch } from "../../actions/actionCreatorsDispatch";
-import Navbar from "./Navbar";
-import NewEvent from "./NewEvent";
-import { editEventSidebarObj } from "../../actions/actionCreatorsObj";
-//import { eventViewObj } from "../../actions/actionCreatorsObj";
+import { deleteEventDispatch } from "../../actions/actionCreatorsDispatch";
+import NewEventButton from "./NewEventButton";
+import { editEventSidebarObj, setDayDetailObj, toggleDetailSidebarObj, toggleNewEventSidebarObj } from "../../actions/actionCreatorsObj";
 
 const DayDetail = () => {
 
@@ -33,10 +31,9 @@ const DayDetail = () => {
     dayDetail,
     currentMonth,
     currentYear,
-    flagEvent
   } = calendarContext;
 
-  console.log(dayDetail)
+  //console.log(dayDetail.today)
   //console.log(flagEvent)
 
   const fullEvent = (el) => {
@@ -57,7 +54,8 @@ const DayDetail = () => {
       <button
         className="sidebar__close-btn"
         onClick={() => {
-          dispatch(toggleDetailSidebarDispatch(false));
+          dispatch(toggleDetailSidebarObj(false));
+          dispatch(toggleNewEventSidebarObj(false));
         }}
       >
         <i className="fas fa-times-circle"></i>
@@ -75,7 +73,7 @@ const DayDetail = () => {
               className="delete-event-btn"
               onClick={() => {
                 dispatch(deleteEventDispatch(calendarContext,event.id));
-                dispatch(setDayDetailDispatch(
+                dispatch(setDayDetailObj(
                   dayDetail.today,
                   dayDetail.events.filter(e => e.id !== event.id)
                 ));
@@ -86,7 +84,7 @@ const DayDetail = () => {
             <button
               className="edit-event-btn"
               onClick={() => {
-                dispatch(toggleNewEventSidebarDispatch(true));
+                dispatch(toggleNewEventSidebarObj(true));
                 dispatch(editEventSidebarObj(event))
               }}
               // onClick={() => {
@@ -116,7 +114,7 @@ const DayDetail = () => {
         <span>{`${months[currentMonth]} ${dayDetail.today}`}</span> in history
         (Wikipedia)
       </a>
-      <Navbar />
+      <NewEventButton date={dayDetail.today}/>
     </div>
   );
 };

@@ -320,7 +320,7 @@ li {
   margin: auto;
   position: absolute;
   left: -200%;
-  width: 50%;
+  width: 40%;
   height: 70%;
   padding-left: 1rem;
   background-size: cover;
@@ -417,7 +417,7 @@ li {
 .calendar .new-event-sidebar {
   position: absolute;
   left: -100%;
-  width: 50%;
+  width: 40%;
   height: 100vh;
   padding-left: 1rem;
   background-size: cover;

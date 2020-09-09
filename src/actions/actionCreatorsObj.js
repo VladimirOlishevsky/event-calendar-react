@@ -12,8 +12,10 @@ import {
   DELETE_EVENT,
   EVENT_VIEW,
   CHANGE_EVENT_FIELD,
-  CLEAR_EVENT_FIELD
+  CLEAR_EVENT_FIELD,
+  ADD_EVENT_DATE
 } from "./actionTypes";
+
 
 export const eventViewObj = (context) => ({
   type: EVENT_VIEW,
@@ -99,12 +101,19 @@ export const setEventsObj = events => ({
   payload: events
 
 });
-
+// Change event field
 export const changeServiceField = (name, value) => ({
  type: CHANGE_EVENT_FIELD, 
  payload: { name, value }
 })
 
+// Clear event field
 export const clearEventField = () => ({
   type: CLEAR_EVENT_FIELD,
+})
+
+// Add event date when you in DayDetail window
+export const addEventDate = (date) => ({
+  type: ADD_EVENT_DATE,
+  payload: date
 })

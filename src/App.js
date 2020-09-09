@@ -1,13 +1,13 @@
 import React from "react";
 import Calendar from "./components/calendar/Calendar";
 import "./css/App.css";
-import Navbar from "./components/calendar/Navbar";
+import NewEventButton from "./components/calendar/NewEventButton";
 
 function App() {
   return (
     <>
       <div className="App">
-        <Navbar />
+        <NewEventButton />
         <div className="container">
           <Calendar />
         </div>

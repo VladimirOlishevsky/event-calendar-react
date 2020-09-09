@@ -2,29 +2,51 @@ import {
   getCurrentDateObj,
   prevMonthObj,
   nextMonthObj,
-  setDayDetailObj,
   setDaysObj,
   deleteEventObj,
   setEventsObj,
-  toggleDetailSidebarObj,
-  toggleEventsSidebarObj,
-  toggleNewEventSidebarObj
 
 } from "./actionCreatorsObj";
 
 import uuid from "uuid";
+import moment from 'moment';
+
+
 
 
 export const getCurrentDateDispatch = (year, month, date) => (dispatch) => {
 
+  function weekDays(month, year) {
+    const endDate = moment.utc().year(year).month(month).endOf('month');
 
+    return Array(endDate.date()).fill(0).map((_, i) => moment.utc().year(year).month(month).date(i + 1))
+        .map((day) => ({day, week: day.week()}))
+        .filter(({week}, i, arr) => arr.findIndex((info) => info.week === week) === i)
+        .map(({day, week}) => ({
+            week,
+            days: Array(7).fill(0).map((_, i) => moment.utc(day).week(week).startOf('week').add(i, 'day'))
+        }));
+
+}
+
+  let a = weekDays()
+  console.log(a)
+
+
+
+  console.log(year)
+  console.log(month)
+  console.log(date)
   const currDayOfMonth = date;
   const currMonth = month;
   const currYear = year;
 
   // Find the starting day of the month
   let startingDay = new Date(currYear, currMonth - 1, 1).getDay();
-  dispatch(getCurrentDateObj(currYear, currMonth, currDayOfMonth, ))
+
+  console.log(startingDay) // 2
+
+  dispatch(getCurrentDateObj(currYear, currMonth, currDayOfMonth))
   dispatch(setDaysDispatch(startingDay, currMonth, currYear));
 
 };
@@ -123,24 +145,6 @@ export const nextMonthDispatch = (state) => (dispatch) => {
   }
 };
 
-// Set day detail
-export const setDayDetailDispatch = (today, events) => (dispatch) => {
-  dispatch(setDayDetailObj(today, events))
-};
-
-
-export const toggleDetailSidebarDispatch = (condition) => (dispatch) => {
-  dispatch(toggleDetailSidebarObj(condition))
-}
-
-export const toggleEventsSidebarDispatch = (condition) => (dispatch) => {
-  dispatch(toggleEventsSidebarObj(condition))
-}
-
-export const toggleNewEventSidebarDispatch = (condition) => (dispatch) => {
-  dispatch(toggleNewEventSidebarObj(condition))
-}
-
 
 // Add event
 export const addEventDispatch = (id, eventName, date, participants, description, state) => (dispatch) => {
@@ -159,7 +163,6 @@ export const addEventDispatch = (id, eventName, date, participants, description,
   let events;
 
   if (localStorageElement) {
-    //JSON.parse(localStorage.getItem("events")).splice()
     const changeEvent = {
       id: id,
       date: date,
@@ -202,15 +205,11 @@ export const deleteEventDispatch = (state, id) => (dispatch) => {
 export const getEventsFromLS = () => (dispatch) => {
   const events = localStorage.getItem("events");
   if (events === null) {
-    dispatch(setEventsDispatch([]));
+    dispatch(setEventsObj([]));
   } else {
-    dispatch(setEventsDispatch(JSON.parse(events)));
+    dispatch(setEventsObj(JSON.parse(events)));
   }
 };
-
-export const setEventsDispatch = (events) => (dispatch) => {
-  dispatch(setEventsObj(events))
-}
 
 // Add event to localstorage
 export const addEventsToLS = events => {

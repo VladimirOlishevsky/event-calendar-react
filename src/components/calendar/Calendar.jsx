@@ -2,34 +2,36 @@ import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import Day from "./Day";
 import DayDetail from "./DayDetail";
-import NewEvent from "./NewEvent";
+import NewEventSidebar from "./NewEventSidebar";
 import Buttons from "./Buttons";
 import { getCurrentDateDispatch, getEventsFromLS} from "../../actions/actionCreatorsDispatch"
 
 import moment from 'moment';
 
 const Calendar = () => {
-  const [jumpToggled, setJumpToggled] = useState(false);
+  //const [jumpToggled, setJumpToggled] = useState(false);
   const body = document.getElementsByTagName("body");
   const dispatch = useDispatch();
 
   //Months array
-  const months = [
-    "zero",
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ]; 
+  // const months = [
+  //   "zero",
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "August",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "December"
+  // ]; 
 
+  // console.log(moment().year())
+  // console.log(new Date().getFullYear());
   //const months = moment.months()
 
   //console.log(months)
@@ -46,11 +48,13 @@ const Calendar = () => {
     newEventSidebarToggled,
     editEventSidebarToggled,
   } = calendarContext;
+
+  
   
   useEffect(() => {
-    const date = new Date();
+    //const date = new Date();
     
-    dispatch(getCurrentDateDispatch(date.getFullYear(), date.getMonth() + 1, date.getDate()));
+    dispatch(getCurrentDateDispatch(moment().year(), moment().month() + 1, moment().date()));
     dispatch(getEventsFromLS());
   }, [dispatch]);
 
@@ -68,15 +72,7 @@ const Calendar = () => {
   return (
     <div className="calendar">
       <div className="title">
-        {months[currentMonth]} {currentYear}{" "}
-        <button
-          className={jumpToggled ? "edit-date-btn toggled" : "edit-date-btn"}
-          onClick={() => {
-            setJumpToggled(!jumpToggled);
-          }}
-        >
-          <i className="fas fa-pencil-alt"></i>
-        </button>
+        {moment.months(currentMonth - 1)} {currentYear}{" "}
         <Buttons />
       </div>
       <div className="calendar-table">
@@ -105,7 +101,7 @@ const Calendar = () => {
         </div>
       </div>
       <DayDetail />
-      <NewEvent />
+      <NewEventSidebar />
     </div>
   );
 };

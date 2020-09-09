@@ -2,9 +2,6 @@ import React from 'react'
 
 function EditField({ onEdited, value, type, name, className }) {
 
-    //console.log(type)
-
-    {
         return (
 
             <>
@@ -32,7 +29,7 @@ function EditField({ onEdited, value, type, name, className }) {
                     />}
             </>
         )
-    }
+    
 }
 
 
