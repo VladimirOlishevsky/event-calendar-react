@@ -8,8 +8,8 @@ The calendar is implemented in React.js. Allows you to add, edit, delete events.
 
 ## Where to begin:
 - Clone the repository https://github.com/VladimirOlishevsky/event-calendar-react.git
-- Set yarn dependencies
-- Start a yarn startup project.
+- Set ```yarn``` dependencies
+- Start a ```yarn start``` project.
 
 ## Working with the project:
 
