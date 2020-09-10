@@ -8,7 +8,7 @@
 
 <img src="./readme_assets/calendar-img.jpg" width="100%">
 
-<h1 align="center"><a href="https://vladimirolishevsky.github.io/event-calendar-react/"></a>Live Demo</h1>
+<h1 align="center"><a href="https://vladimirolishevsky.github.io/event-calendar-react/">Live Demo</a></h1>
 
 ## Description
 
