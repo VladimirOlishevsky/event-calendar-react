@@ -1,5 +1,12 @@
 <h1 align="center">Event Calendar React</h1>
 
+<h1 align="center">
+
+[![Build status](https://ci.appveyor.com/api/projects/status/v1w4wakip5v2ilmg?svg=true)](https://ci.appveyor.com/project/VladimirOlishevsky/event-calendar-react)
+
+</h1>
+
+
 <img src="./readme_assets/calendar-img.jpg" width="100%">
 
 ## Description
