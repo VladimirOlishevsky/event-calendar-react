@@ -9,6 +9,7 @@ const initialState = {
     id: "",
     eventName: "",
     date: "",
+    time: "",
     participants: "",
     description: "",
 };

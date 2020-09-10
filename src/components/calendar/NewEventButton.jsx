@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
-import { changeServiceField, clearEventField, addEventDate, toggleEventsSidebarObj, toggleNewEventSidebarObj } from "../../actions/actionCreatorsObj";
+import { changeServiceField, clearEventField, addEventDate, toggleEventsSidebarObj, toggleNewEventSidebarObj, toggleDetailSidebarObj } from "../../actions/actionCreatorsObj";
 
 
 const NewEventButton = ({date}) => {
@@ -27,6 +27,7 @@ const NewEventButton = ({date}) => {
           onClick={() => {
            dispatch(toggleNewEventSidebarObj(!newEventSidebarToggled));
            dispatch(toggleEventsSidebarObj(false));
+           dispatch(toggleDetailSidebarObj(false))
            dispatch(clearEventField())
            date ? dispatchEditEventDate() : dispatch(addEventDate(null))
           }}

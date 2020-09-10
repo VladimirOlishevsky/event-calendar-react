@@ -1,6 +1,8 @@
 import React from 'react'
 
-function EditField({ onEdited, value, type, name, className }) {
+function EditField({ onEdited, value, type, name, className, options }) {
+
+    //console.log(options)
 
         return (
 
@@ -12,11 +14,14 @@ function EditField({ onEdited, value, type, name, className }) {
                         value={value}
                         onChange={onEdited}
                     >
-                        <option value=""></option>
+                        {options ? options.map((el, index) => (
+                            <option key={index} value={el}>{el}</option>
+                        )) : null}
+                        {/* <option value=""></option>
                         <option value="Ivan">Ivan</option>
                         <option value="Julia">Julia</option>
                         <option value="Dan">Dan</option>
-                        <option value="Michael">Michael</option>
+                        <option value="Michael">Michael</option> */}
                     </select> :
                     <input
                         type={type}

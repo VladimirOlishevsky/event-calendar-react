@@ -16,27 +16,6 @@ import moment from 'moment';
 
 export const getCurrentDateDispatch = (year, month, date) => (dispatch) => {
 
-  function weekDays(month, year) {
-    const endDate = moment.utc().year(year).month(month).endOf('month');
-
-    return Array(endDate.date()).fill(0).map((_, i) => moment.utc().year(year).month(month).date(i + 1))
-        .map((day) => ({day, week: day.week()}))
-        .filter(({week}, i, arr) => arr.findIndex((info) => info.week === week) === i)
-        .map(({day, week}) => ({
-            week,
-            days: Array(7).fill(0).map((_, i) => moment.utc(day).week(week).startOf('week').add(i, 'day'))
-        }));
-
-}
-
-  let a = weekDays()
-  console.log(a)
-
-
-
-  console.log(year)
-  console.log(month)
-  console.log(date)
   const currDayOfMonth = date;
   const currMonth = month;
   const currYear = year;
@@ -44,7 +23,7 @@ export const getCurrentDateDispatch = (year, month, date) => (dispatch) => {
   // Find the starting day of the month
   let startingDay = new Date(currYear, currMonth - 1, 1).getDay();
 
-  console.log(startingDay) // 2
+  //console.log(startingDay) // 2
 
   dispatch(getCurrentDateObj(currYear, currMonth, currDayOfMonth))
   dispatch(setDaysDispatch(startingDay, currMonth, currYear));
@@ -147,11 +126,12 @@ export const nextMonthDispatch = (state) => (dispatch) => {
 
 
 // Add event
-export const addEventDispatch = (id, eventName, date, participants, description, state) => (dispatch) => {
+export const addEventDispatch = (id, eventName, date, time, participants, description, state) => (dispatch) => {
 
   console.log(id)
   console.log(eventName)
   console.log(date)
+  console.log(time)
   console.log(participants)
   console.log(description)
   console.log(state)
@@ -166,6 +146,7 @@ export const addEventDispatch = (id, eventName, date, participants, description,
     const changeEvent = {
       id: id,
       date: date,
+      time: time,
       participants: participants,
       eventName: eventName,
       description: description
@@ -176,6 +157,7 @@ export const addEventDispatch = (id, eventName, date, participants, description,
     let newEvent = {
       id: uuid.v4(),
       date: date,
+      time: time,
       participants: participants,
       eventName: eventName,
       description: description

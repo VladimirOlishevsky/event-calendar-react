@@ -41,10 +41,10 @@ const Day = ({ day: { visible, dayOfMonth, date } }) => {
     >
       {dayOfMonth}
       <div>
-        {todaysEvents.map((e, index) => (
-          <span key={index} e={e}>
+        {todaysEvents.map((el, index) => (
+          <span key={index} el={el}>
             {" "}
-            <i className={`fas fa-star ${e.participants}`}></i>
+            <i className={`fas fa-star ${el.participants}`}></i>
           </span>
         ))}
       </div>

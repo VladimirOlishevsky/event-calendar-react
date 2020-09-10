@@ -85,6 +85,7 @@ const DayDetail = () => {
               className="edit-event-btn"
               onClick={() => {
                 dispatch(toggleNewEventSidebarObj(true));
+                dispatch(toggleDetailSidebarObj(false)) 
                 dispatch(editEventSidebarObj(event))
               }}
               // onClick={() => {
@@ -98,13 +99,14 @@ const DayDetail = () => {
               <i className="fas fa-edit"></i>
             </button>
           <p className="event-date"><span className="text-bold">Date: </span>{event.date}</p>
+          <p className="event-time"><span className="text-bold">Time: </span>{event.time}</p>
           <p className="event-eventName"><span className="text-bold">Event Name: </span> {event.eventName}</p>
           <p className="event-participants"><span className="text-bold">Performer: </span>{event.participants}</p>
           <p className="event-description"><span className="text-bold">Description: </span>{event.description}</p>
           </li>
         ))}
       </ul>
-      <a
+      {/* <a
         href={`https://en.wikipedia.org/wiki/${months[currentMonth]}_${dayDetail.today}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -113,7 +115,7 @@ const DayDetail = () => {
         <i className="fas fa-external-link-alt"></i> On{" "}
         <span>{`${months[currentMonth]} ${dayDetail.today}`}</span> in history
         (Wikipedia)
-      </a>
+      </a> */}
       <NewEventButton date={dayDetail.today}/>
     </div>
   );
