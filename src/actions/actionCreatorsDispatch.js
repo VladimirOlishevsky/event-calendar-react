@@ -9,9 +9,6 @@ import {
 } from "./actionCreatorsObj";
 
 import uuid from "uuid";
-import moment from 'moment';
-
-
 
 
 export const getCurrentDateDispatch = (year, month, date) => (dispatch) => {
@@ -23,11 +20,8 @@ export const getCurrentDateDispatch = (year, month, date) => (dispatch) => {
   // Find the starting day of the month
   let startingDay = new Date(currYear, currMonth - 1, 1).getDay();
 
-  //console.log(startingDay) // 2
-
   dispatch(getCurrentDateObj(currYear, currMonth, currDayOfMonth))
   dispatch(setDaysDispatch(startingDay, currMonth, currYear));
-
 };
 
 
@@ -99,7 +93,7 @@ export const setDaysDispatch = (sd, m, y) => (dispatch) => {
   dispatch(setDaysObj(daysArr))
 };
 
-
+// Get prev month
 export const prevMonthDispatch = (state) => (dispatch) => {
   if (state.currentMonth === 1) {
     dispatch(getCurrentDateDispatch(state.currentYear - 1, 12, 1));
@@ -112,6 +106,7 @@ export const prevMonthDispatch = (state) => (dispatch) => {
   }
 };
 
+// Get next month
 export const nextMonthDispatch = (state) => (dispatch) => {
   if (state.currentMonth === 12) {
     dispatch(getCurrentDateDispatch(state.currentYear + 1, 1, 1));
@@ -127,16 +122,6 @@ export const nextMonthDispatch = (state) => (dispatch) => {
 
 // Add event
 export const addEventDispatch = (id, eventName, date, time, participants, description, state) => (dispatch) => {
-
-  console.log(id)
-  console.log(eventName)
-  console.log(date)
-  console.log(time)
-  console.log(participants)
-  console.log(description)
-  console.log(state)
-
-  //console.log();
 
   const localStorageElement = JSON.parse(localStorage.getItem("events")).find(el => el.id === id);
 
@@ -166,7 +151,6 @@ export const addEventDispatch = (id, eventName, date, time, participants, descri
     events = [...state.events, newEvent]
 
   };
-  //let events = [...state.events, newEvent];
 
   addEventsToLS(events);
   dispatch(getEventsFromLS());

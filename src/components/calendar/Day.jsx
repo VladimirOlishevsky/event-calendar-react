@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setDayDetailObj, addEventDate, toggleDetailSidebarObj, toggleEventsSidebarObj, toggleNewEventSidebarObj } from "../../actions/actionCreatorsObj";
 
 const Day = ({ day: { visible, dayOfMonth, date } }) => {
@@ -7,7 +7,6 @@ const Day = ({ day: { visible, dayOfMonth, date } }) => {
   const calendarContext = useSelector(state => state.calendarState);
   const dispatch = useDispatch();
 
-//console.log(dayOfMonth)
   const {
     events,
   } = calendarContext;
@@ -31,11 +30,10 @@ const Day = ({ day: { visible, dayOfMonth, date } }) => {
     <button
       className={cn}
       onClick={() => {
-        //dispatch(setDayDetailDispatch(dayOfMonth, todaysEvents));
         dispatch(setDayDetailObj(dayOfMonth, todaysEvents))
         dispatch(toggleDetailSidebarObj(true));
         dispatch(toggleEventsSidebarObj(false));
-        dispatch(toggleNewEventSidebarObj(false)); /////////////////////////
+        dispatch(toggleNewEventSidebarObj(false));
         dispatch(addEventDate(dayOfMonth))
       }}
     >

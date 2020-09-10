@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { prevMonthDispatch, nextMonthDispatch } from "../../actions/actionCreatorsDispatch"
 
 
@@ -14,7 +14,7 @@ const Buttons = () => {
       <button
         className="prev-btn"
         onClick={() => {
-         dispatch(prevMonthDispatch(calendarContext)) ;
+          dispatch(prevMonthDispatch(calendarContext));
         }}
       >
         <i className="fas fa-chevron-left"></i>
@@ -22,7 +22,7 @@ const Buttons = () => {
       <button
         className="next-btn"
         onClick={() => {
-         dispatch(nextMonthDispatch(calendarContext)) ;
+          dispatch(nextMonthDispatch(calendarContext));
         }}
       >
         <i className="fas fa-chevron-right"></i>

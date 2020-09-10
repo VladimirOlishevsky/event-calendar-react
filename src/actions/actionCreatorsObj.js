@@ -10,17 +10,11 @@ import {
   SET_DAY_DETAIL,
   SET_EVENTS,
   DELETE_EVENT,
-  EVENT_VIEW,
   CHANGE_EVENT_FIELD,
   CLEAR_EVENT_FIELD,
   ADD_EVENT_DATE
 } from "./actionTypes";
 
-
-export const eventViewObj = (context) => ({
-  type: EVENT_VIEW,
-  payload: context
-})
 
 export const setDaysObj = (daysArr) => ({
   type: SET_DAYS,
@@ -33,7 +27,7 @@ export const getCurrentDateObj = (year, month, date) => ({
   payload: {
     year,
     month,
-    date,   
+    date,
   },
 });
 
@@ -103,8 +97,11 @@ export const setEventsObj = events => ({
 });
 // Change event field
 export const changeServiceField = (name, value) => ({
- type: CHANGE_EVENT_FIELD, 
- payload: { name, value }
+  type: CHANGE_EVENT_FIELD,
+  payload: {
+    name,
+    value
+  }
 })
 
 // Clear event field

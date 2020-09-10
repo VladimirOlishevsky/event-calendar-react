@@ -1,9 +1,9 @@
 import React from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeServiceField, clearEventField, addEventDate, toggleEventsSidebarObj, toggleNewEventSidebarObj, toggleDetailSidebarObj } from "../../actions/actionCreatorsObj";
 
 
-const NewEventButton = ({date}) => {
+const NewEventButton = ({ date }) => {
 
   const calendarContext = useSelector(state => state.calendarState);
   const dispatch = useDispatch();
@@ -25,11 +25,11 @@ const NewEventButton = ({date}) => {
         <button
           className="new-event-btn"
           onClick={() => {
-           dispatch(toggleNewEventSidebarObj(!newEventSidebarToggled));
-           dispatch(toggleEventsSidebarObj(false));
-           dispatch(toggleDetailSidebarObj(false))
-           dispatch(clearEventField())
-           date ? dispatchEditEventDate() : dispatch(addEventDate(null))
+            dispatch(toggleNewEventSidebarObj(!newEventSidebarToggled));
+            dispatch(toggleEventsSidebarObj(false));
+            dispatch(toggleDetailSidebarObj(false))
+            dispatch(clearEventField())
+            date ? dispatchEditEventDate() : dispatch(addEventDate(null))
           }}
         >
           <i className="fas fa-plus"></i> New Event

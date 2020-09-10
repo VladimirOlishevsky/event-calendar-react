@@ -9,7 +9,6 @@ import {
   SET_DAY_DETAIL,
   DELETE_EVENT,
   SET_EVENTS,
-  EVENT_VIEW,
   ADD_EVENT_DATE,
 } from "../actions/actionTypes";
 
@@ -18,7 +17,6 @@ const initialState = {
   currentMonth: null,
   currentYear: null,
   days: [],
-  //currentEvents: [],
   dayDetail: {
     today: null,
     events: []
@@ -28,22 +26,12 @@ const initialState = {
   newEventSidebarToggled: false,
   editEventSidebarToggled: false,
   eventDate: '',
-  // editedEvent: {
-  //   id: "",
-  //   eventName: "",
-  //   date: "",
-  //   participants: "",
-  //   description: "",
-  // },
-  //events: [],
-  //flagEvent: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_CURRENT_DATE:
 
-    //console.log(action.payload)
       return {
         ...state,
         currentDayOfMonth: action.payload.date,
@@ -99,12 +87,12 @@ export default (state = initialState, action) => {
         ...state,
         events: action.payload
       };
-      case ADD_EVENT_DATE:
+    case ADD_EVENT_DATE:
       return {
         ...state,
         eventDate: action.payload
       };
-      default:
-        return state;
+    default:
+      return state;
   }
 };
