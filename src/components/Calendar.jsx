@@ -4,7 +4,7 @@ import Day from "./Day";
 import DayDetail from "./DayDetail";
 import NewEventSidebar from "./NewEventSidebar";
 import Buttons from "./Buttons";
-import { getCurrentDateDispatch, getEventsFromLS } from "../../actions/actionCreatorsDispatch"
+import { getCurrentDateDispatch, getEventsFromLS } from "../actions/actionCreatorsDispatch"
 
 import moment from 'moment';
 

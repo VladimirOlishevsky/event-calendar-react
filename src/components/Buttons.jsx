@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { prevMonthDispatch, nextMonthDispatch } from "../../actions/actionCreatorsDispatch"
+import { prevMonthDispatch, nextMonthDispatch } from "../actions/actionCreatorsDispatch"
 
 
 const Buttons = () => {

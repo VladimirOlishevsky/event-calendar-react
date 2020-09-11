@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { addEventDispatch } from "../../actions/actionCreatorsDispatch"
-import { changeServiceField, toggleNewEventSidebarObj } from "../../actions/actionCreatorsObj";
+import { addEventDispatch } from "../actions/actionCreatorsDispatch"
+import { changeServiceField, toggleNewEventSidebarObj } from "../actions/actionCreatorsObj";
 import EditField from "./EditField";
 
 const NewEventSidebar = () => {

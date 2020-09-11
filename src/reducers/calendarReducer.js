@@ -77,7 +77,6 @@ export default (state = initialState, action) => {
       };
 
     case DELETE_EVENT:
-      console.log(action.payload)
       return {
         ...state,
         events: state.events.filter(e => e.id !== action.payload)

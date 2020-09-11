@@ -17,12 +17,10 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case EDIT_EVENT:
-            console.log(action.payload)
             return {
                 ...action.payload
             }
             case CHANGE_EVENT_FIELD:
-                console.log(action.payload)
                 const {
                     name, value
                 } = action.payload;

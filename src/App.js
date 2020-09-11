@@ -1,7 +1,7 @@
 import React from "react";
-import Calendar from "./components/calendar/Calendar";
+import Calendar from "./components/Calendar";
 import "./css/App.css";
-import NewEventButton from "./components/calendar/NewEventButton";
+import NewEventButton from "./components/NewEventButton";
 
 function App() {
   return (

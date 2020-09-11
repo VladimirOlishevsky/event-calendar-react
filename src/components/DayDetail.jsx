@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { deleteEventDispatch } from "../../actions/actionCreatorsDispatch";
+import { deleteEventDispatch } from "../actions/actionCreatorsDispatch";
 import NewEventButton from "./NewEventButton";
-import { editEventSidebarObj, setDayDetailObj, toggleDetailSidebarObj, toggleNewEventSidebarObj } from "../../actions/actionCreatorsObj";
+import { editEventSidebarObj, setDayDetailObj, toggleDetailSidebarObj, toggleNewEventSidebarObj } from "../actions/actionCreatorsObj";
 import moment from 'moment';
 
 
