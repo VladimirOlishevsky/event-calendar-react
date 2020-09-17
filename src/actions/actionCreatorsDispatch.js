@@ -123,11 +123,16 @@ export const nextMonthDispatch = (state) => (dispatch) => {
 // Add event
 export const addEventDispatch = (id, eventName, date, time, participants, description, state) => (dispatch) => {
 
-  const localStorageElement = JSON.parse(localStorage.getItem("events")).find(el => el.id === id);
+  console.log(localStorage.getItem("events"))
+  //const localStorageElement = JSON.parse(localStorage.getItem("events")).find(el => el.id === id);
+
+  
 
   let events;
 
-  if (localStorageElement) {
+  //if (localStorageElement) {
+    if (localStorage.getItem("events")) {
+    //const localStorageElement = JSON.parse(localStorage.getItem("events")).find(el => el.id === id);
     const changeEvent = {
       id: id,
       date: date,
